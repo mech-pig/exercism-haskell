@@ -10,9 +10,9 @@ nextPrime :: Integer -> Integer
 nextPrime = until isPrime succ
 
 isPrime :: Integer -> Bool
-isPrime n = hasIntegerDivisors 2
+isPrime n = hasNoIntegerDivisorsStartingFrom 2
   where
-    hasIntegerDivisors :: Integer -> Bool
-    hasIntegerDivisors i
+    hasNoIntegerDivisorsStartingFrom :: Integer -> Bool
+    hasNoIntegerDivisorsStartingFrom i
       | (i * i) > n = True
-      | otherwise   = (n `mod` i /= 0) && hasIntegerDivisors (i + 1)
+      | otherwise   = (n `mod` i /= 0) && hasNoIntegerDivisorsStartingFrom (i + 1)
